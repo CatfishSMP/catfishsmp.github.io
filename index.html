@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catfish SMP</title>
     <style>
-        /* General Page Styling */
+        /* Modern Animated Color Grade Background */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #050f05;
-            background-image: radial-gradient(circle at center, #0a1f0a 0%, #050f05 100%);
-            color: #ffffff;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            color: #ffffff;
+            /* Multi-tone Green Gradient */
+            background: linear-gradient(-45deg, #051a05, #0a2e0a, #1b4d1b, #051a05);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -25,25 +33,26 @@
             text-align: center;
         }
 
-        /* Title Card */
+        /* Title Card with Glassmorphism effect */
         .title-card {
-            background: linear-gradient(135deg, #2e7d32, #00e676);
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.8), rgba(0, 230, 118, 0.8));
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 0 25px rgba(46, 125, 50, 0.4);
-            border: 1px solid #4caf50;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
         }
 
         .title-card h1 {
             margin: 0;
             font-size: 3.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
         }
 
-        /* Grid Layouts */
+        /* Layout Grids */
         .cards-grid, .tutorial-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -57,17 +66,20 @@
             }
         }
 
-        /* Card Styling */
+        /* Enhanced Card Styling */
         .server-card, .status-card, .rules-card, .tutorial-card {
-            background-color: #121c12;
+            background: rgba(18, 28, 18, 0.9);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 15px;
             border: 1px solid #2e7d32;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .server-card:hover {
+            transform: translateY(-5px);
+            border-color: #00e676;
+            box-shadow: 0 12px 24px rgba(0, 230, 118, 0.2);
         }
 
         h2 {
@@ -76,15 +88,12 @@
             padding-bottom: 10px;
             color: #a5d6a7;
             text-transform: uppercase;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
-        h3 {
-            color: #00e676;
-            margin-top: 0;
-        }
+        h3 { color: #00e676; margin-top: 0; }
 
-        /* Text Styling */
+        /* Guide and Rules List */
         .guide-text {
             text-align: left;
             font-size: 0.95rem;
@@ -93,7 +102,6 @@
         }
 
         .guide-text ol { padding-left: 20px; }
-        .guide-text li { margin-bottom: 8px; }
 
         .rules-list {
             text-align: left;
@@ -110,46 +118,49 @@
 
         .rules-list li {
             font-size: 0.95rem;
-            background: rgba(46, 125, 50, 0.1);
-            padding: 8px 12px;
-            border-radius: 6px;
+            background: rgba(46, 125, 50, 0.2);
+            padding: 10px;
+            border-radius: 8px;
             border-left: 4px solid #00e676;
         }
 
-        /* Info Groups */
+        /* Info Display Row */
         .info-group {
-            background-color: #0a0f0a;
-            padding: 10px;
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            text-align: left;
             border: 1px solid #1b5e20;
         }
 
-        .info-text { display: flex; flex-direction: column; }
-        .label { font-size: 0.8rem; color: #81c784; }
-        .value { font-family: monospace; font-weight: bold; color: #fff; }
+        .info-text { display: flex; flex-direction: column; text-align: left; }
+        .label { font-size: 0.75rem; color: #81c784; text-transform: uppercase; }
+        .value { font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.05rem; }
 
         .recommended-badge {
-            font-size: 0.7rem;
-            background-color: #ffd700;
+            font-size: 0.65rem;
+            background: #ffd700;
             color: #000;
             padding: 2px 6px;
             border-radius: 4px;
             margin-left: 5px;
+            font-weight: bold;
         }
 
-        /* Buttons */
+        /* Action Buttons */
         .copy-btn {
-            background-color: #1b5e20;
+            background: #1b5e20;
             color: #fff;
             border: 1px solid #2e7d32;
-            padding: 6px 12px;
-            border-radius: 5px;
+            padding: 6px 14px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: 0.2s;
         }
+
+        .copy-btn:hover { background: #2e7d32; }
 
         .action-btn {
             display: inline-block;
@@ -157,25 +168,32 @@
             color: white;
             text-decoration: none;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             text-transform: uppercase;
             border: 1px solid #66bb6a;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+            transform: scale(1.02);
         }
 
         .start-btn {
             background: linear-gradient(to right, #f57f17, #fbc02d);
             border: 1px solid #fdd835;
             color: #000;
+            padding: 12px 40px;
             width: fit-content;
             align-self: center;
-            padding: 12px 30px;
         }
 
         .warning-text {
             font-size: 0.85rem;
             color: #ffca28;
             font-style: italic;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -236,9 +254,9 @@
                     <ol>
                         <li>Open Minecraft and click <b>Play</b>.</li>
                         <li>Go to the <b>Servers</b> tab.</li>
-                        <li>Scroll down and click <b>Add Server</b>.</li>
-                        <li>Enter <b>Catfish SMP</b> as the name.</li>
-                        <li>Enter the IP and Port shown above.</li>
+                        <li>Click <b>Add Server</b>.</li>
+                        <li>Name: <b>Catfish SMP</b></li>
+                        <li>Enter the IP and Port from above.</li>
                         <li>Click <b>Save & Play</b>!</li>
                     </ol>
                 </div>
@@ -246,10 +264,10 @@
                     <h3>Java Edition (PC)</h3>
                     <ol>
                         <li>Open Minecraft and click <b>Multiplayer</b>.</li>
-                        <li>Click <b>Add Server</b> or <b>Direct Connection</b>.</li>
-                        <li>Enter <b>Catfish SMP</b> as the name.</li>
-                        <li>Paste the <b>Recommended IP</b> into the Server Address box.</li>
-                        <li>Click <b>Done</b> and join the server!</li>
+                        <li>Click <b>Add Server</b>.</li>
+                        <li>Name: <b>Catfish SMP</b></li>
+                        <li>Paste the <b>Recommended IP</b>.</li>
+                        <li>Click <b>Done</b> and join!</li>
                     </ol>
                 </div>
             </div>
