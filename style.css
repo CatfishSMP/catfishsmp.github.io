@@ -23,12 +23,16 @@ body {
   text-align: center;
 }
 
-/* Header / Title */
-header {
-  padding: 30px 20px;
+/* Title Card */
+.title-card {
+  background: rgba(0,0,0,0.7);
+  display: inline-block;
+  padding: 20px 40px;
+  border-radius: 12px;
+  margin: 30px auto 0;
 }
 
-header h1 {
+.title-card h1 {
   font-size: 3rem;
   color: var(--primary);
 }
@@ -46,7 +50,7 @@ header h1 {
   background: var(--box-bg);
   padding: 30px;
   border-radius: 12px;
-  width: 280px;
+  width: 300px;
   text-align: center;
 }
 
@@ -57,22 +61,26 @@ header h1 {
 
 .server-box p {
   margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
-.server-box button {
-  margin: 5px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 8px;
-  background: var(--btn-bg);
-  color: #fff;
+.server-box .recommended {
+  font-size: 0.9rem;
+  color: #FFD700;
+  margin: 0 0 10px 0;
+}
+
+.server-box i.fas.fa-clipboard {
   cursor: pointer;
-  transition: background 0.3s;
+  color: var(--secondary);
+  transition: color 0.3s;
 }
 
-.server-box button:hover {
-  background: var(--btn-hover);
-  color: #000;
+.server-box i.fas.fa-clipboard:hover {
+  color: #fff;
 }
 
 .server-box .btn {
