@@ -15,7 +15,7 @@
   --btn-hover: #FFD700;
 }
 
-/* Body with green gradient */
+/* Body */
 body {
   background: linear-gradient(135deg, #1b5e20, #4caf50, #a5d6a7);
   color: #f0f0f0;
@@ -33,8 +33,7 @@ body {
 .title-card {
   background: rgba(0,0,0,0.8);
   padding: 25px 50px;
-  border-radius: 16px;
-  box-shadow: 5px 5px #000;
+  border-radius: 12px;
 }
 
 .title-card h1 {
@@ -57,14 +56,7 @@ body {
   border-radius: 12px;
   width: 320px;
   text-align: center;
-  border: 4px solid #000;
-  box-shadow: 4px 4px #000;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.server-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 6px 6px #000;
+  border: 2px solid #000;
 }
 
 .server-box h2 {
@@ -83,7 +75,7 @@ body {
 .server-box .recommended {
   font-size: 0.9rem;
   color: var(--secondary);
-  margin: 0 0 10px 0;
+  margin-bottom: 10px;
 }
 
 /* Copy Buttons */
@@ -103,14 +95,8 @@ body {
   color: #000;
 }
 
-/* Bedrock join button next to text */
-.bedrock-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.bedrock-info .btn {
+/* Join Button */
+.btn {
   padding: 8px 15px;
   border-radius: 6px;
   background: var(--btn-bg);
@@ -120,7 +106,7 @@ body {
   transition: background 0.3s;
 }
 
-.bedrock-info .btn:hover {
+.btn:hover {
   background: var(--btn-hover);
   color: #000;
 }
@@ -130,7 +116,7 @@ footer {
   margin-top: 50px;
   padding: 20px;
   background: rgba(0,0,0,0.85);
-  border-top: 3px solid var(--primary);
+  border-top: 2px solid var(--primary);
   font-weight: bold;
 }
 
