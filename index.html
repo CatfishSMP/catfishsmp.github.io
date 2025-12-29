@@ -1,67 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catfish SMP</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catfish SMP</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Container for the layout */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 1. Main Title Card */
+        .title-card {
+            background: linear-gradient(135deg, #1e90ff, #00bfff); /* Blue gradient */
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .title-card h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Grid for Edition Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Common Card Styling */
+        .server-card {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.2s;
+        }
+
+        .server-card:hover {
+            transform: translateY(-5px);
+            border-color: #1e90ff;
+        }
+
+        .server-card h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            color: #eee;
+        }
+
+        /* Info Rows (IP/Port display) */
+        .info-group {
+            background-color: #2a2a2a;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 2px;
+        }
+
+        .value {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .recommended-badge {
+            font-size: 0.7rem;
+            background-color: #4caf50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* Buttons */
+        .copy-btn {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #666;
+        }
+
+        .copy-btn:active {
+            background-color: #1e90ff;
+        }
+
+        .action-btn {
+            display: inline-block;
+            background-color: #1e90ff;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: #00bfff;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Title Card -->
-  <header>
-    <div class="title-card-wrapper">
-      <div class="title-card">
-        <h1>Catfish SMP</h1>
-      </div>
+    <div class="container">
+        
+        <div class="title-card">
+            <h1>Catfish SMP</h1>
+        </div>
+
+        <div class="cards-grid">
+            
+            <div class="server-card">
+                <h2>Bedrock Edition</h2>
+                
+                <div class="info-group">
+                    <div class="info-text">
+                        <span class="label">Server IP</span>
+                        <span class="value" id="bedrock-ip">catfishsmp.falixsrv.me</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('bedrock-ip')">Copy</button>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-text">
+                        <span class="label">Port</span>
+                        <span class="value" id="bedrock-port">32227</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('bedrock-port')">Copy</button>
+                </div>
+
+                <a href="minecraft://?addExternalServer=CatfishSMP|catfishsmp.falixsrv.me:32227" class="action-btn">
+                    Open Bedrock Edition
+                </a>
+            </div>
+
+            <div class="server-card">
+                <h2>Java Edition</h2>
+
+                <div class="info-group">
+                    <div class="info-text">
+                        <span class="label">Server IP <span class="recommended-badge">Recommended</span></span>
+                        <span class="value" id="java-ip">catfishsmp.falixsrv.me</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('java-ip')">Copy</button>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-text">
+                        <span class="label">Full IP (Direct)</span>
+                        <span class="value" id="java-full">catfishsmp.falixsrv.me:32227</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('java-full')">Copy</button>
+                </div>
+                
+                </div>
+
+        </div>
     </div>
-  </header>
 
-  <!-- Server Boxes -->
-  <section id="home">
-    <div class="server-box-container">
+    <script>
+        function copyToClipboard(elementId) {
+            // Get the text content from the element
+            var copyText = document.getElementById(elementId).innerText;
 
-      <!-- Bedrock Edition -->
-      <div class="server-box bedrock">
-        <h2>Bedrock Edition</h2>
-        <p>IP: <span class="copy-text" id="bedrock-ip">catfishsmp.falixsrv.me</span> 
-          <button class="copy-btn" onclick="copyText('bedrock-ip')">Copy</button>
-        </p>
-        <p>Port: <span class="copy-text" id="bedrock-port">32227</span> 
-          <button class="copy-btn" onclick="copyText('bedrock-port')">Copy</button>
-        </p>
-        <a href="minecraft://" class="btn">Join</a>
-      </div>
-
-      <!-- Java Edition -->
-      <div class="server-box java">
-        <h2>Java Edition</h2>
-        <p class="recommended">recommended</p>
-        <p>IP: <span class="copy-text" id="java-ip">catfishsmp.falixsrv.me</span> 
-          <button class="copy-btn" onclick="copyText('java-ip')">Copy</button>
-        </p>
-        <p>Full IP: <span class="copy-text" id="java-full-ip">catfishsmp.falixsrv.me:32227</span> 
-          <button class="copy-btn" onclick="copyText('java-full-ip')">Copy</button>
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>Catfish SMP website</p>
-  </footer>
-
-  <script>
-    function copyText(elementId) {
-      const text = document.getElementById(elementId).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Copied: ' + text);
-      });
-    }
-  </script>
+            // Use the Clipboard API
+            navigator.clipboard.writeText(copyText).then(function() {
+                // Optional: Alert the user or change button text temporarily
+                alert("Copied: " + copyText);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
 
 </body>
 </html>
