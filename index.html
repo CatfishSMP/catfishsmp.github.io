@@ -5,298 +5,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catfish SMP</title>
     <style>
-        /* Clean Green Color Grade Background */
+        /* Unified Green Background */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 40px 20px; /* More space at top and bottom */
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Start from top instead of centered */
-            min-height: 100vh;
-            color: #ffffff;
-            background: radial-gradient(circle at top, #0d3b0d 0%, #051405 100%);
+            background: radial-gradient(circle at top, #0d3b0d 0%, #050e05 100%);
             background-attachment: fixed;
+            color: #ffffff;
         }
 
-        .container {
-            max-width: 1000px; /* Wider container so things aren't squished */
+        /* The Main Wrapper that holds everything together */
+        .main-wrapper {
+            max-width: 900px;
             width: 100%;
-            text-align: center;
+            background-color: #121c12; /* Single dark background for all content */
+            border-radius: 20px;
+            border: 1px solid #2e7d32;
+            overflow: hidden; /* Keeps corners clean */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 
-        /* Title Card - Bold and Wide */
-        .title-card {
+        /* Title section attached to the top */
+        .title-header {
             background: linear-gradient(135deg, #2e7d32, #00e676);
             padding: 50px 20px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #4caf50;
+            text-align: center;
+            border-bottom: 2px solid #2e7d32;
         }
 
-        .title-card h1 {
+        .title-header h1 {
             margin: 0;
-            font-size: 4rem;
+            font-size: 3.5rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* Grids - Fixed Spacing */
-        .cards-grid, .tutorial-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px; /* More space between cards */
-            margin-bottom: 30px;
-        }
-        
-        @media (min-width: 768px) {
-            .cards-grid, .tutorial-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        /* Content Padding */
+        .content-area {
+            padding: 30px;
         }
 
-        /* Normal Card Styling */
-        .server-card, .status-card, .rules-card, .tutorial-card {
-            background-color: #121c12;
-            padding: 35px; /* Bigger internal padding */
-            border-radius: 15px;
-            border: 1px solid #2e7d32;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        /* Section Containers (Attached with borders instead of gaps) */
+        .section {
+            padding: 30px 0;
+            border-bottom: 1px solid #233523;
         }
 
-        .server-card:hover {
-            border-color: #00e676;
-            transform: translateY(-5px);
-            transition: 0.3s ease;
+        .section:last-child {
+            border-bottom: none;
         }
 
         h2 {
-            margin: 0;
-            border-bottom: 2px solid #2e7d32;
-            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
             color: #a5d6a7;
             text-transform: uppercase;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
+            text-align: center;
         }
 
-        h3 { color: #00e676; margin-top: 0; margin-bottom: 15px; }
-
-        /* Guide and Rules List */
-        .guide-text {
-            text-align: left;
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .guide-text ol { padding-left: 25px; }
-        .guide-text li { margin-bottom: 12px; }
-
-        .rules-list {
-            text-align: left;
-            list-style: none;
-            padding: 0;
+        /* Internal Grids */
+        .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
-        @media (min-width: 600px) {
-            .rules-list { grid-template-columns: 1fr 1fr; }
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: 1fr 1fr; }
         }
 
-        .rules-list li {
-            background: rgba(46, 125, 50, 0.15);
-            padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 5px solid #00e676;
-            font-size: 1rem;
-        }
-
-        /* IP Row Groups */
-        .info-group {
+        /* Sub-Cards (IP display boxes) */
+        .box {
             background-color: #0a0f0a;
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
             border: 1px solid #1b5e20;
         }
 
-        .info-text { display: flex; flex-direction: column; text-align: left; }
-        .label { font-size: 0.8rem; color: #81c784; margin-bottom: 4px; }
-        .value { font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.1rem; }
+        /* Info Display */
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            border-radius: 8px;
+        }
 
-        .recommended-badge {
-            font-size: 0.7rem;
-            background-color: #ffd700;
+        .info-label { font-size: 0.75rem; color: #81c784; text-transform: uppercase; }
+        .info-value { font-family: monospace; font-weight: bold; font-size: 1rem; }
+
+        .recommended {
+            font-size: 0.65rem;
+            background: #ffd700;
             color: #000;
-            padding: 3px 8px;
-            border-radius: 5px;
-            margin-left: 8px;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-weight: bold;
         }
 
         /* Buttons */
         .copy-btn {
-            background-color: #1b5e20;
+            background: #1b5e20;
             color: #fff;
-            border: 1px solid #2e7d32;
-            padding: 8px 15px;
-            border-radius: 6px;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: 0.2s;
         }
 
-        .copy-btn:hover { background-color: #2e7d32; }
-
         .action-btn {
-            display: inline-block;
+            display: block;
+            width: 100%;
+            padding: 15px;
             background: linear-gradient(to right, #2e7d32, #43a047);
             color: white;
             text-decoration: none;
-            padding: 18px;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: bold;
+            text-align: center;
             text-transform: uppercase;
-            border: 1px solid #66bb6a;
-            transition: 0.2s;
-        }
-
-        .action-btn:hover {
-            filter: brightness(1.1);
-            box-shadow: 0 5px 15px rgba(0, 230, 118, 0.3);
+            box-sizing: border-box;
         }
 
         .start-btn {
             background: linear-gradient(to right, #f57f17, #fbc02d);
-            border: 1px solid #fdd835;
             color: #000;
-            width: fit-content;
-            align-self: center;
-            padding: 15px 40px;
-            margin-top: 10px;
+            max-width: 300px;
+            margin: 20px auto 0;
         }
 
-        .warning-text {
-            font-size: 0.9rem;
-            color: #ffca28;
-            font-style: italic;
-            margin-top: 10px;
+        /* Lists */
+        .guide-list { text-align: left; font-size: 0.95rem; line-height: 1.6; padding-left: 20px; }
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            text-align: left;
         }
+        .rule-item {
+            background: rgba(46, 125, 50, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #00e676;
+            font-size: 0.9rem;
+        }
+
+        .warning { color: #ffca28; font-size: 0.85rem; font-style: italic; display: block; margin-top: 10px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div class="main-wrapper">
+    <div class="title-header">
+        <h1>Catfish SMP</h1>
+    </div>
+
+    <div class="content-area">
         
-        <div class="title-card">
-            <h1>Catfish SMP</h1>
-        </div>
+        <div class="section">
+            <div class="grid">
+                <div class="box">
+                    <h2>Bedrock</h2>
+                    <div class="info-row">
+                        <div><span class="info-label">IP</span><br><span class="info-value" id="b-ip">catfishsmp.falixsrv.me</span></div>
+                        <button class="copy-btn" onclick="copy('b-ip')">Copy</button>
+                    </div>
+                    <div class="info-row">
+                        <div><span class="info-label">Port</span><br><span class="info-value" id="b-port">32227</span></div>
+                        <button class="copy-btn" onclick="copy('b-port')">Copy</button>
+                    </div>
+                    <a href="minecraft://?addExternalServer=CatfishSMP|catfishsmp.falixsrv.me:32227" class="action-btn">Open Bedrock</a>
+                </div>
 
-        <div class="cards-grid">
-            <div class="server-card">
-                <h2>Bedrock Edition</h2>
-                <div class="info-group">
-                    <div class="info-text">
-                        <span class="label">Server IP</span>
-                        <span class="value" id="bedrock-ip">catfishsmp.falixsrv.me</span>
+                <div class="box">
+                    <h2>Java</h2>
+                    <div class="info-row">
+                        <div><span class="info-label">IP <span class="recommended">Recommended</span></span><br><span class="info-value" id="j-ip">catfishsmp.falixsrv.me</span></div>
+                        <button class="copy-btn" onclick="copy('j-ip')">Copy</button>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('bedrock-ip')">Copy</button>
-                </div>
-                <div class="info-group">
-                    <div class="info-text">
-                        <span class="label">Port</span>
-                        <span class="value" id="bedrock-port">32227</span>
+                    <div class="info-row">
+                        <div><span class="info-label">Full IP</span><br><span class="info-value" id="j-full">catfishsmp.falixsrv.me:32227</span></div>
+                        <button class="copy-btn" onclick="copy('j-full')">Copy</button>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('bedrock-port')">Copy</button>
-                </div>
-                <a href="minecraft://?addExternalServer=CatfishSMP|catfishsmp.falixsrv.me:32227" class="action-btn">
-                    Open Bedrock Edition
-                </a>
-            </div>
-
-            <div class="server-card">
-                <h2>Java Edition</h2>
-                <div class="info-group">
-                    <div class="info-text">
-                        <span class="label">Server IP <span class="recommended-badge">Recommended</span></span>
-                        <span class="value" id="java-ip">catfishsmp.falixsrv.me</span>
-                    </div>
-                    <button class="copy-btn" onclick="copyToClipboard('java-ip')">Copy</button>
-                </div>
-                <div class="info-group">
-                    <div class="info-text">
-                        <span class="label">Full IP (Direct)</span>
-                        <span class="value" id="java-full">catfishsmp.falixsrv.me:32227</span>
-                    </div>
-                    <button class="copy-btn" onclick="copyToClipboard('java-full')">Copy</button>
                 </div>
             </div>
         </div>
 
-        <div class="tutorial-card">
+        <div class="section">
             <h2>How to Join</h2>
-            <div class="tutorial-grid">
+            <div class="grid">
                 <div class="guide-text">
-                    <h3>Bedrock (Mobile/PC)</h3>
-                    <ol>
-                        <li>Open Minecraft and click <b>Play</b>.</li>
-                        <li>Go to the <b>Servers</b> tab.</li>
+                    <h3 style="color:#00e676; margin-top:0;">Bedrock (Mobile/PC)</h3>
+                    <ol class="guide-list">
+                        <li>Open Minecraft > Play > Servers.</li>
                         <li>Click <b>Add Server</b>.</li>
                         <li>Name: <b>Catfish SMP</b></li>
-                        <li>Enter IP and Port from above.</li>
-                        <li>Click <b>Save & Play</b>!</li>
+                        <li>Enter IP & Port above and click Save.</li>
                     </ol>
                 </div>
                 <div class="guide-text">
-                    <h3>Java Edition (PC)</h3>
-                    <ol>
-                        <li>Open Minecraft and click <b>Multiplayer</b>.</li>
-                        <li>Click <b>Add Server</b>.</li>
+                    <h3 style="color:#00e676; margin-top:0;">Java (PC)</h3>
+                    <ol class="guide-list">
+                        <li>Multiplayer > Add Server.</li>
                         <li>Name: <b>Catfish SMP</b></li>
-                        <li>Paste the <b>Recommended IP</b>.</li>
-                        <li>Click <b>Done</b> and join!</li>
+                        <li>Paste the Recommended IP.</li>
+                        <li>Click Done and Join!</li>
                     </ol>
                 </div>
             </div>
         </div>
 
-        <div class="rules-card">
+        <div class="section">
             <h2>Server Rules</h2>
-            <ul class="rules-list">
-                <li>No Hacking / Cheating</li>
-                <li>No Abusing Glitches</li>
-                <li>No Duplication Glitches</li>
-                <li>No X-Ray</li>
-                <li>No Hacking Texture Packs</li>
-            </ul>
+            <div class="rules-grid">
+                <div class="rule-item">No Hacking</div>
+                <div class="rule-item">No Abusing Glitches</div>
+                <div class="rule-item">No Duplications</div>
+                <div class="rule-item">No X-Ray</div>
+                <div class="rule-item">No Hacking Packs</div>
+            </div>
         </div>
 
-        <div class="status-card">
+        <div class="section" style="text-align:center;">
             <h2>Server Offline?</h2>
-            <p>If the server is currently offline, start it yourself here:</p>
-            <a href="https://falixnodes.net/startserver?ip=catfishsmp.falixsrv.me" target="_blank" class="action-btn start-btn">
-                Start Server
-            </a>
-            <span class="warning-text">⚠️ Note: You might have to watch ads to start the server.</span>
+            <p style="margin:0;">You can start the server yourself using the link below:</p>
+            <a href="https://falixnodes.net/startserver?ip=catfishsmp.falixsrv.me" target="_blank" class="action-btn start-btn">Start Server</a>
+            <span class="warning">⚠️ Note: You might have to watch ads to start the server.</span>
         </div>
 
     </div>
+</div>
 
-    <script>
-        function copyToClipboard(elementId) {
-            const text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Copied: " + text);
-            });
-        }
-    </script>
+<script>
+    function copy(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Copied: " + text);
+        });
+    }
+</script>
 
 </body>
 </html>
