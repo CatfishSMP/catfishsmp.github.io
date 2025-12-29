@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catfish SMP</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- For clipboard icon -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Clipboard icon -->
 </head>
 <body>
 
@@ -16,25 +16,24 @@
     </div>
   </header>
 
-  <!-- Home Section with Boxes -->
+  <!-- Server Boxes -->
   <section id="home">
     <div class="server-box-container">
       
-      <!-- Bedrock Box -->
-      <div class="server-box">
+      <!-- Bedrock Edition -->
+      <div class="server-box bedrock">
         <h2>Bedrock Edition</h2>
         <p>IP: <span class="copy-text" id="bedrock-ip">catfishsmp.falixsrv.me</span> <i class="fas fa-clipboard" onclick="copyText('bedrock-ip')"></i></p>
         <p>Port: <span class="copy-text" id="bedrock-port">32227</span> <i class="fas fa-clipboard" onclick="copyText('bedrock-port')"></i></p>
         <a href="minecraft://" class="btn">Join Minecraft Bedrock</a>
       </div>
 
-      <!-- Java Box -->
-      <div class="server-box">
+      <!-- Java Edition -->
+      <div class="server-box java">
         <h2>Java Edition</h2>
         <p>IP: <span class="copy-text" id="java-ip">catfishsmp.falixsrv.me</span> <i class="fas fa-clipboard" onclick="copyText('java-ip')"></i></p>
         <p class="recommended">recommended</p>
         <p>Full IP: <span class="copy-text" id="java-full-ip">catfishsmp.falixsrv.me:32227</span> <i class="fas fa-clipboard" onclick="copyText('java-full-ip')"></i></p>
-        <a href="minecraft://" class="btn">Join Java Edition</a>
       </div>
 
     </div>
@@ -46,7 +45,7 @@
   </footer>
 
   <script>
-    // Copy function
+    // Copy to clipboard function
     function copyText(elementId) {
       const text = document.getElementById(elementId).textContent;
       navigator.clipboard.writeText(text).then(() => {
