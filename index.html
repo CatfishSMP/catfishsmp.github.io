@@ -8,61 +8,62 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Title -->
   <header>
-    <a href="#hero" class="logo">🐟 Catfish SMP</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#rules">Rules</a>
-      <a href="#join">Join</a>
-    </nav>
+    <h1>🐟 Catfish SMP</h1>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <h1>Welcome to Catfish SMP!</h1>
-    <p>Survive, build, and explore with your friends on our friendly Minecraft server.</p>
-    <a href="#join" class="btn">Join Now</a>
-  </section>
+  <!-- Home Section with Boxes -->
+  <section id="home">
+    <div class="server-box-container">
+      
+      <!-- Bedrock Box 1 -->
+      <div class="server-box">
+        <h2>Bedrock Edition</h2>
+        <p>IP: <span class="copy-text" id="bedrock-ip-1">catfishsmp.falixsrv.me</span></p>
+        <p>Port: <span class="copy-text" id="bedrock-port-1">32227</span></p>
+        <button onclick="copyText('bedrock-ip-1')">Copy IP</button>
+        <button onclick="copyText('bedrock-port-1')">Copy Port</button>
+        <a href="minecraft://" class="btn">Join Bedrock</a>
+      </div>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Catfish SMP</h2>
-    <p>Catfish SMP is a welcoming Minecraft SMP server focused on community, creativity, and adventure. Build, trade, and explore amazing worlds with fellow players!</p>
-  </section>
+      <!-- Bedrock Box 2 -->
+      <div class="server-box">
+        <h2>Bedrock Edition</h2>
+        <p>IP: <span class="copy-text" id="bedrock-ip-2">catfishsmp.falixsrv.me</span></p>
+        <p>Port: <span class="copy-text" id="bedrock-port-2">32227</span></p>
+        <button onclick="copyText('bedrock-ip-2')">Copy IP</button>
+        <button onclick="copyText('bedrock-port-2')">Copy Port</button>
+        <a href="minecraft://" class="btn">Join Bedrock</a>
+      </div>
 
-  <!-- Rules Section -->
-  <section id="rules">
-    <h2>Server Rules</h2>
-    <div class="rules-container">
-      <div class="rule-card">
-        <h3>Respect</h3>
-        <p>Treat all players with kindness. No bullying or harassment.</p>
+      <!-- Java Box -->
+      <div class="server-box">
+        <h2>Java Edition</h2>
+        <p>Recommended IP: <span class="copy-text" id="java-ip">catfishsmp.falixsrv.me</span></p>
+        <p>Full IP: <span class="copy-text" id="java-full-ip">catfishsmp.falixsrv.me:32227</span></p>
+        <button onclick="copyText('java-ip')">Copy Recommended IP</button>
+        <button onclick="copyText('java-full-ip')">Copy Full IP</button>
+        <a href="minecraft://" class="btn">Join Java</a>
       </div>
-      <div class="rule-card">
-        <h3>No Griefing</h3>
-        <p>Do not destroy or steal from other players’ builds.</p>
-      </div>
-      <div class="rule-card">
-        <h3>No Cheats</h3>
-        <p>Use only vanilla gameplay. No hacking or exploits.</p>
-      </div>
+
     </div>
-  </section>
-
-  <!-- Join Section -->
-  <section id="join">
-    <h2>Join the Server</h2>
-    <p>If the server is not online, <a href="https://falixnodes.net/startserver?ip=catfishsmp.falixsrv.me" target="_blank" style="color:#FFD700; text-decoration: underline;">start it yourself here</a></p>
-    <p>IP: <strong>catfishsmp.falixsrv.me</strong></p>
-    <p>Port: <strong>32227</strong></p>
-    <a href="minecraft://" class="btn">Join Minecraft Bedrock</a>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>Catfish SMP website</p>
   </footer>
+
+  <script>
+    // Copy function
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied: ' + text);
+      });
+    }
+  </script>
 
 </body>
 </html>
