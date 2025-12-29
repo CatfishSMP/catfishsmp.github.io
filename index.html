@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catfish SMP</title>
     <style>
-        /* General Page Styling */
+        /* General Page Styling - Deep Forest Green Background */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212; /* Dark background */
+            background-color: #050f05; /* Very dark green/black */
+            background-image: radial-gradient(circle at center, #0a1f0a 0%, #050f05 100%);
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -25,13 +26,14 @@
             text-align: center;
         }
 
-        /* 1. Main Title Card */
+        /* 1. Main Title Card - Green Gradient */
         .title-card {
-            background: linear-gradient(135deg, #1e90ff, #00bfff); /* Blue gradient */
+            background: linear-gradient(135deg, #2e7d32, #00e676); /* Dark Green to Bright Green */
             padding: 40px;
             border-radius: 15px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 25px rgba(46, 125, 50, 0.4);
+            border: 1px solid #4caf50;
         }
 
         .title-card h1 {
@@ -39,7 +41,8 @@
             font-size: 3.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #fff;
         }
 
         /* Grid for Edition Cards */
@@ -55,40 +58,42 @@
             }
         }
 
-        /* Common Card Styling */
+        /* Common Card Styling - Green Tinted Dark Cards */
         .server-card {
-            background-color: #1e1e1e;
+            background-color: #121c12; /* Dark Green-Gray */
             padding: 30px;
             border-radius: 12px;
-            border: 1px solid #333;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid #2e7d32; /* Green Border */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             gap: 15px;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
 
         .server-card:hover {
             transform: translateY(-5px);
-            border-color: #1e90ff;
+            border-color: #00e676; /* Bright Green on hover */
+            box-shadow: 0 10px 20px rgba(0, 230, 118, 0.1);
         }
 
         .server-card h2 {
             margin-top: 0;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #2e7d32;
             padding-bottom: 10px;
-            color: #eee;
+            color: #a5d6a7; /* Light Green Text */
         }
 
         /* Info Rows (IP/Port display) */
         .info-group {
-            background-color: #2a2a2a;
+            background-color: #0a0f0a; /* Almost black */
             padding: 10px;
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             text-align: left;
+            border: 1px solid #1b5e20;
         }
 
         .info-text {
@@ -98,7 +103,7 @@
 
         .label {
             font-size: 0.8rem;
-            color: #aaa;
+            color: #81c784; /* Soft Green */
             margin-bottom: 2px;
         }
 
@@ -111,8 +116,9 @@
 
         .recommended-badge {
             font-size: 0.7rem;
-            background-color: #4caf50;
-            color: white;
+            background-color: #ffd700; /* Gold/Yellow for contrast */
+            color: #000;
+            font-weight: bold;
             padding: 2px 6px;
             border-radius: 4px;
             margin-left: 5px;
@@ -121,9 +127,9 @@
 
         /* Buttons */
         .copy-btn {
-            background-color: #444;
-            color: white;
-            border: none;
+            background-color: #1b5e20; /* Dark Green */
+            color: #e8f5e9;
+            border: 1px solid #2e7d32;
             padding: 8px 12px;
             border-radius: 5px;
             cursor: pointer;
@@ -132,16 +138,13 @@
         }
 
         .copy-btn:hover {
-            background-color: #666;
-        }
-
-        .copy-btn:active {
-            background-color: #1e90ff;
+            background-color: #2e7d32;
+            color: white;
         }
 
         .action-btn {
             display: inline-block;
-            background-color: #1e90ff;
+            background: linear-gradient(to right, #2e7d32, #43a047);
             color: white;
             text-decoration: none;
             padding: 15px;
@@ -149,11 +152,14 @@
             font-weight: bold;
             text-transform: uppercase;
             margin-top: 10px;
-            transition: background 0.3s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #66bb6a;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .action-btn:hover {
-            background-color: #00bfff;
+            background: linear-gradient(to right, #43a047, #66bb6a);
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
         }
     </style>
 </head>
@@ -217,12 +223,8 @@
 
     <script>
         function copyToClipboard(elementId) {
-            // Get the text content from the element
             var copyText = document.getElementById(elementId).innerText;
-
-            // Use the Clipboard API
             navigator.clipboard.writeText(copyText).then(function() {
-                // Optional: Alert the user or change button text temporarily
                 alert("Copied: " + copyText);
             }).catch(function(err) {
                 console.error('Could not copy text: ', err);
