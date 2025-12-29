@@ -7,6 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
     
     <style>
+        /* Animated Green Color Grade Background */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -44,36 +45,6 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .status-badge {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer; /* Makes it clickable to manually refresh */
-        }
-
-        .dot {
-            height: 12px;
-            width: 12px;
-            background-color: #777;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        .online .dot { background-color: #00ff00; box-shadow: 0 0 12px #00ff00; animation: pulse 2s infinite; }
-        .offline .dot { background-color: #ff4444; box-shadow: 0 0 12px #ff4444; }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
         }
 
         .cards-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 25px; }
@@ -115,6 +86,7 @@
             border-radius: 4px;
             font-weight: bold;
             margin-left: 5px;
+            vertical-align: middle;
         }
 
         .copy-btn { background: #1b5e20; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
@@ -130,43 +102,94 @@
         @media (min-width: 600px) { .rules-list { grid-template-columns: 1fr 1fr; } }
         .rule-item { background: rgba(46, 125, 50, 0.15); padding: 10px 15px; border-radius: 8px; border-left: 4px solid #00e676; }
 
+        .tutorial-grid { display: grid; grid-template-columns: 1fr; gap: 25px; text-align: left; }
+        @media (min-width: 768px) { .tutorial-grid { grid-template-columns: 1fr 1fr; } }
+        .guide ol { padding-left: 20px; line-height: 1.6; }
+
         .warning { color: #ffca28; font-size: 0.85rem; font-style: italic; display: block; margin-top: 10px; text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    
     <div class="title-card">
         <h1>Catfish SMP</h1>
-        <div id="status-badge" class="status-badge" onclick="checkServerStatus()">
-            <span class="dot"></span> <span id="status-text">Pinging Server...</span>
-        </div>
     </div>
 
     <div class="cards-grid">
         <div class="card">
             <h2>Bedrock</h2>
             <div class="info-row">
-                <div class="info-text"><span class="label">Server IP</span><span class="value" id="b-ip">catfishsmp.falixsrv.me</span></div>
+                <div class="info-text">
+                    <span class="label">Server IP</span>
+                    <span class="value" id="b-ip">catfishsmp.falixsrv.me</span>
+                </div>
                 <button class="copy-btn" onclick="copy('b-ip')">Copy</button>
             </div>
             <div class="info-row">
-                <div class="info-text"><span class="label">Port</span><span class="value" id="b-port">32227</span></div>
+                <div class="info-text">
+                    <span class="label">Port</span>
+                    <span class="value" id="b-port">32227</span>
+                </div>
                 <button class="copy-btn" onclick="copy('b-port')">Copy</button>
             </div>
-            <a href="minecraft://externalServer?name=CatfishSMP&serverAddress=catfishsmp.falixsrv.me&port=32227" class="action-btn">Open Minecraft Bedrock</a>
+            <a href="minecraft://externalServer?name=CatfishSMP&serverAddress=catfishsmp.falixsrv.me&port=32227" class="action-btn">
+                Open Minecraft Bedrock
+            </a>
         </div>
 
         <div class="card">
             <h2>Java</h2>
             <div class="info-row">
-                <div class="info-text"><span class="label">IP <span class="recommended">Recommended</span></span><span class="value" id="j-ip">catfishsmp.falixsrv.me</span></div>
+                <div class="info-text">
+                    <span class="label">IP <span class="recommended">Recommended</span></span>
+                    <span class="value" id="j-ip">catfishsmp.falixsrv.me</span>
+                </div>
                 <button class="copy-btn" onclick="copy('j-ip')">Copy</button>
             </div>
             <div class="info-row">
-                <div class="info-text"><span class="label">Full IP (Direct)</span><span class="value" id="j-full">catfishsmp.falixsrv.me:32227</span></div>
+                <div class="info-text">
+                    <span class="label">Full IP (Direct)</span>
+                    <span class="value" id="j-full">catfishsmp.falixsrv.me:32227</span>
+                </div>
                 <button class="copy-btn" onclick="copy('j-full')">Copy</button>
             </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>How to Join</h2>
+        <div class="tutorial-grid">
+            <div class="guide">
+                <h3 style="color:#00e676; margin-top:0;">Bedrock (Mobile/PC)</h3>
+                <ol>
+                    <li>Open Minecraft > Play > Servers.</li>
+                    <li>Scroll down and click <b>Add Server</b>.</li>
+                    <li>Name: <b>Catfish SMP</b></li>
+                    <li>Enter the IP and Port from above.</li>
+                </ol>
+            </div>
+            <div class="guide">
+                <h3 style="color:#00e676; margin-top:0;">Java (PC)</h3>
+                <ol>
+                    <li>Multiplayer > Add Server.</li>
+                    <li>Name: <b>Catfish SMP</b></li>
+                    <li>Paste the Recommended IP address.</li>
+                    <li>Click Done and join!</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Server Rules</h2>
+        <div class="rules-list">
+            <div class="rule-item">No Hacking / Cheating</div>
+            <div class="rule-item">No Abusing Glitches</div>
+            <div class="rule-item">No Duplication Glitches</div>
+            <div class="rule-item">No X-Ray</div>
+            <div class="rule-item">No Hacking Texture Packs</div>
         </div>
     </div>
 
@@ -174,50 +197,18 @@
         <h2>Server Offline?</h2>
         <p style="margin:0;">If the server is not online, you can start it yourself here:</p>
         <a href="https://falixnodes.net/startserver?ip=catfishsmp.falixsrv.me" target="_blank" class="action-btn start-btn">Start Server</a>
+        <span class="warning">⚠️ Note: You might have to watch ads to start the server.</span>
     </div>
+
 </div>
 
 <script>
     function copy(id) {
         const text = document.getElementById(id).innerText;
-        navigator.clipboard.writeText(text).then(() => { alert("Copied: " + text); });
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Copied: " + text);
+        });
     }
-
-    async function checkServerStatus() {
-        const statusText = document.getElementById('status-text');
-        const statusBadge = document.getElementById('status-badge');
-        
-        // This is your numeric IP and port
-        const ip = "46.224.111.26";
-        const port = "32227";
-
-        statusText.innerText = "Checking...";
-
-        try {
-            // Added cache-busting to prevent GitHub from showing old data
-            const response = await fetch(`https://api.mcsrvstat.us/2/${ip}:${port}?t=${Date.now()}`);
-            const data = await response.json();
-
-            statusBadge.classList.remove('online', 'offline');
-            if (data.online) {
-                statusBadge.classList.add('online');
-                statusText.innerText = `Online: ${data.players.online} Players`;
-            } else {
-                statusBadge.classList.add('offline');
-                statusText.innerText = 'Server Offline';
-            }
-        } catch (err) {
-            statusBadge.classList.add('offline');
-            statusText.innerText = 'Status Offline';
-            console.log("Ping failed:", err);
-        }
-    }
-
-    // Run when the page is ready
-    window.addEventListener('load', () => {
-        checkServerStatus();
-        setInterval(checkServerStatus, 30000);
-    });
 </script>
 
 </body>
