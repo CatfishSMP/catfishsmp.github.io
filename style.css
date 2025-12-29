@@ -10,13 +10,13 @@
 :root {
   --primary: #4CAF50;
   --secondary: #FFD700;
-  --bg-dark: #0b0c0f;
-  --section-bg: rgba(0,0,0,0.7);
+  --bg-dark: #1e1e1e;
+  --section-bg: rgba(30, 30, 30, 0.85);
 }
 
 /* Body */
 body {
-  background: url('https://i.imgur.com/6lX5T4L.png') repeat;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #f0f0f0;
   line-height: 1.6;
 }
@@ -56,7 +56,7 @@ header nav a:hover {
 .hero {
   text-align: center;
   padding: 100px 20px;
-  background: var(--section-bg);
+  background: rgba(0,0,0,0.8);
   border-radius: 12px;
   margin: 20px;
 }
@@ -106,7 +106,7 @@ section {
 
 .rule-card {
   flex: 1 1 250px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   padding: 20px;
   border-radius: 10px;
   text-align: center;
