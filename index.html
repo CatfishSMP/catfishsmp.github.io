@@ -43,7 +43,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Card Layouts */
+        /* Grid Layouts */
         .cards-grid, .tutorial-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -79,7 +79,12 @@
             font-size: 1.5rem;
         }
 
-        /* Tutorial/Rules Text Styling */
+        h3 {
+            color: #00e676;
+            margin-top: 0;
+        }
+
+        /* Text Styling */
         .guide-text {
             text-align: left;
             font-size: 0.95rem;
@@ -87,13 +92,8 @@
             color: #e8f5e9;
         }
 
-        .guide-text ol {
-            padding-left: 20px;
-        }
-
-        .guide-text li {
-            margin-bottom: 8px;
-        }
+        .guide-text ol { padding-left: 20px; }
+        .guide-text li { margin-bottom: 8px; }
 
         .rules-list {
             text-align: left;
@@ -116,7 +116,7 @@
             border-left: 4px solid #00e676;
         }
 
-        /* Info Groups for IP/Port */
+        /* Info Groups */
         .info-group {
             background-color: #0a0f0a;
             padding: 10px;
@@ -228,22 +228,11 @@
             </div>
         </div>
 
-        <div class="rules-card">
-            <h2>Server Rules</h2>
-            <ul class="rules-list">
-                <li>No Hacking / Cheating</li>
-                <li>No Abusing Glitches</li>
-                <li>No Duplication Glitches</li>
-                <li>No X-Ray</li>
-                <li>No Hacking Texture Packs</li>
-            </ul>
-        </div>
-
         <div class="tutorial-card">
             <h2>How to Join</h2>
             <div class="tutorial-grid">
                 <div class="guide-text">
-                    <h3>Bedrock (Mobile/Console/PC)</h3>
+                    <h3>Bedrock (Mobile/PC)</h3>
                     <ol>
                         <li>Open Minecraft and click <b>Play</b>.</li>
                         <li>Go to the <b>Servers</b> tab.</li>
@@ -264,6 +253,17 @@
                     </ol>
                 </div>
             </div>
+        </div>
+
+        <div class="rules-card">
+            <h2>Server Rules</h2>
+            <ul class="rules-list">
+                <li>No Hacking / Cheating</li>
+                <li>No Abusing Glitches</li>
+                <li>No Duplication Glitches</li>
+                <li>No X-Ray</li>
+                <li>No Hacking Texture Packs</li>
+            </ul>
         </div>
 
         <div class="status-card">
