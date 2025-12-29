@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Minecraft', 'Courier New', monospace;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Colors */
@@ -23,7 +23,7 @@ body {
   text-align: center;
 }
 
-/* Title Card Wrapper */
+/* Title Card */
 .title-card-wrapper {
   display: flex;
   justify-content: center;
@@ -40,7 +40,6 @@ body {
 .title-card h1 {
   font-size: 3rem;
   color: var(--primary);
-  text-shadow: 2px 2px #000;
 }
 
 /* Server Boxes */
@@ -56,7 +55,7 @@ body {
   background: var(--box-bg);
   padding: 30px;
   border-radius: 12px;
-  width: 300px;
+  width: 320px;
   text-align: center;
   border: 4px solid #000;
   box-shadow: 4px 4px #000;
@@ -71,7 +70,6 @@ body {
 .server-box h2 {
   color: var(--primary);
   margin-bottom: 15px;
-  text-shadow: 1px 1px #000;
 }
 
 .server-box p {
@@ -79,7 +77,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .server-box .recommended {
@@ -88,20 +86,32 @@ body {
   margin: 0 0 10px 0;
 }
 
-.server-box i.fas.fa-clipboard {
+/* Copy Buttons */
+.copy-btn {
+  padding: 4px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  color: var(--secondary);
-  transition: color 0.3s;
-}
-
-.server-box i.fas.fa-clipboard:hover {
+  background: var(--primary);
   color: #fff;
+  transition: background 0.3s;
 }
 
-.server-box .btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
+.copy-btn:hover {
+  background: var(--secondary);
+  color: #000;
+}
+
+/* Bedrock join button next to text */
+.bedrock-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bedrock-info .btn {
+  padding: 8px 15px;
   border-radius: 6px;
   background: var(--btn-bg);
   color: #fff;
@@ -110,7 +120,7 @@ body {
   transition: background 0.3s;
 }
 
-.server-box .btn:hover {
+.bedrock-info .btn:hover {
   background: var(--btn-hover);
   color: #000;
 }
