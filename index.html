@@ -13,6 +13,7 @@
             --primary-dark: #2e7d32;
             --bg-dark: #051405;
             --card-bg: #121c12;
+            --discord-blue: #5865F2;
         }
 
         body {
@@ -27,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* Smooth Floating Background Animation */
         body::before {
             content: "";
             position: fixed;
@@ -49,7 +49,7 @@
 
         .container { max-width: 900px; width: 100%; }
 
-        /* TITLE CARD WITH GLOW */
+        /* TITLE CARD */
         .title-card {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             padding: 60px 20px;
@@ -69,31 +69,38 @@
             animation: titleGlow 3s ease-in-out infinite;
         }
 
-        /* BUTTON ANIMATIONS */
-        .discord-btn {
+        /* BUTTON FLEX BOX */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .discord-btn, .support-btn {
             display: inline-block;
-            background: #5865F2;
             color: white;
             text-decoration: none;
-            padding: 15px 35px;
+            padding: 15px 25px;
             border-radius: 12px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-top: 25px;
+            font-size: 0.85rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .discord-btn:hover {
-            transform: scale(1.1) rotate(-1deg);
-            box-shadow: 0 15px 30px rgba(88, 101, 242, 0.5);
-            background: #4752c4;
-        }
+        .discord-btn { background: var(--discord-blue); }
+        .support-btn { background: #1b5e20; border: 1px solid var(--primary); }
 
+        .discord-btn:hover { transform: scale(1.05); background: #4752c4; box-shadow: 0 15px 30px rgba(88, 101, 242, 0.4); }
+        .support-btn:hover { transform: scale(1.05); background: var(--primary-dark); box-shadow: 0 15px 30px rgba(0, 230, 118, 0.2); }
+
+        /* CARDS */
         .cards-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 25px; }
         @media (min-width: 768px) { .cards-grid { grid-template-columns: 1fr 1fr; } }
 
-        /* STAGGERED REVEAL FOR CARDS */
         .card {
             background-color: var(--card-bg);
             padding: 30px;
@@ -106,20 +113,15 @@
             animation: revealCard 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,230,118,0.2);
-        }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
 
-        /* Stagger Delays */
         .card:nth-child(1) { animation-delay: 0.2s; }
         .card:nth-child(2) { animation-delay: 0.4s; }
         .how-to-card { animation-delay: 0.6s; }
         .rules-card { animation-delay: 0.8s; }
         .offline-card { animation-delay: 1s; }
 
-        h2 { margin-top: 0; color: #a5d6a7; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid var(--primary-dark); padding-bottom: 15px; margin-bottom: 20px; }
+        h2 { margin-top: 0; color: #a5d6a7; text-transform: uppercase; border-bottom: 2px solid var(--primary-dark); padding-bottom: 15px; margin-bottom: 20px; }
 
         .info-row {
             display: flex;
@@ -129,7 +131,6 @@
             padding: 15px;
             border-radius: 12px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .recommended {
@@ -144,25 +145,21 @@
             cursor: pointer; font-weight: bold; transition: 0.3s;
         }
         .copy-btn:hover { background: var(--primary); color: #000; }
-        .copy-btn.copied { background: #fff; color: #000; transform: scale(0.9); }
 
         .action-btn {
             display: inline-block; padding: 14px 28px; background: linear-gradient(45deg, var(--primary-dark), #43a047);
             color: white; text-decoration: none; border-radius: 12px; font-weight: bold; text-align: center; text-transform: uppercase; transition: 0.4s;
         }
-        .action-btn:hover { filter: brightness(1.2); box-shadow: 0 0 20px rgba(0,230,118,0.4); }
 
         .yt-btn {
             display: block; width: 100%; padding: 18px; background: #FF0000; color: white; border: none; border-radius: 12px;
             font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 30px; transition: 0.4s;
-            letter-spacing: 1px;
         }
-        .yt-btn:hover { background: #cc0000; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4); }
+        .yt-btn:hover { background: #cc0000; transform: translateY(-3px); }
 
         .video-wrapper {
             display: none; margin-top: 25px; position: relative; padding-bottom: 56.25%; height: 0;
             border-radius: 15px; overflow: hidden; border: 3px solid var(--primary-dark);
-            animation: revealCard 0.5s ease;
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
@@ -170,13 +167,10 @@
             background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; border-left: 5px solid var(--primary); 
             margin-bottom: 12px; transition: 0.3s;
         }
-        .rule-item:hover { background: rgba(0,230,118,0.1); transform: translateX(10px); }
+        .rule-item:hover { transform: translateX(10px); background: rgba(0,230,118,0.1); }
 
         .start-btn { background: linear-gradient(45deg, #f57f17, #fbc02d); color: #000; margin-top: 20px; }
-
         .ad-warning { color: #ffca28; font-size: 0.9rem; font-style: italic; display: block; margin-top: 15px; opacity: 0.8; }
-
-        ol li { margin-bottom: 12px; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -184,7 +178,10 @@
 <div class="container">
     <div class="title-card">
         <h1>Catfish SMP</h1>
-        <a href="https://catfishsmp.github.io/discord" class="discord-btn">Join Our Discord</a>
+        <div class="button-group">
+            <a href="https://catfishsmp.github.io/discord" class="discord-btn">Join Main Discord</a>
+            <a href="https://catfishsmp.github.io/CatfishSMPSupport" class="support-btn">🎧 Discord Support</a>
+        </div>
     </div>
 
     <div class="cards-grid">
@@ -270,8 +267,7 @@
         navigator.clipboard.writeText(text).then(() => {
             const old = btn.innerText;
             btn.innerText = "✓";
-            btn.classList.add('copied');
-            setTimeout(() => { btn.innerText = old; btn.classList.remove('copied'); }, 2000);
+            setTimeout(() => { btn.innerText = old; }, 2000);
         });
     }
 
@@ -289,6 +285,9 @@
         }
     }
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
