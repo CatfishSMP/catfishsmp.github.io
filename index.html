@@ -81,7 +81,7 @@
             transition: 0.3s;
             animation: fadeInUp 0.8s ease backwards;
         }
-        /* Staggered animation for cards */
+        
         .card:nth-child(1) { animation-delay: 0.2s; }
         .card:nth-child(2) { animation-delay: 0.3s; }
         .how-to-card { animation-delay: 0.4s; }
@@ -129,7 +129,6 @@
         }
         .action-btn:hover { filter: brightness(1.2); transform: scale(1.02); }
 
-        /* VIDEO STYLES */
         .yt-btn {
             display: block; width: 100%; padding: 15px; background: #FF0000; color: white; border: none; border-radius: 8px;
             font-weight: bold; text-transform: uppercase; cursor: pointer; margin-top: 25px; transition: 0.3s;
@@ -146,7 +145,19 @@
             background: rgba(46, 125, 50, 0.15); padding: 10px 15px; border-radius: 8px; border-left: 4px solid #00e676; margin-bottom: 10px;
         }
 
-        .start-btn { background: linear-gradient(to right, #f57f17, #fbc02d); color: #000; margin: 15px auto 0; }
+        .start-btn { 
+            background: linear-gradient(to right, #f57f17, #fbc02d); 
+            color: #000; 
+            margin: 15px auto 10px; 
+        }
+
+        .ad-warning {
+            color: #ffca28;
+            font-size: 0.85rem;
+            font-style: italic;
+            display: block;
+            margin-top: 5px;
+        }
 
         ol { padding-left: 20px; margin: 0; }
         ol li { margin-bottom: 8px; line-height: 1.4; }
@@ -233,6 +244,7 @@
         <h2>Server Offline?</h2>
         <p>If the server is not online, you can start it yourself here:</p>
         <a href="https://falixnodes.net/startserver?ip=catfishsmp.falixsrv.me" target="_blank" class="action-btn start-btn">Start Server</a>
+        <span class="ad-warning">⚠️ Note: You might have to watch ads to start the server.</span>
     </div>
 </div>
 
