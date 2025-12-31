@@ -157,8 +157,17 @@
         }
         .yt-btn:hover { background: #cc0000; transform: translateY(-3px); }
 
+        .video-note {
+            display: block;
+            margin-top: 10px;
+            color: #ffca28;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
         .video-wrapper {
-            display: none; margin-top: 25px; position: relative; padding-bottom: 56.25%; height: 0;
+            display: none; margin-top: 15px; position: relative; padding-bottom: 56.25%; height: 0;
             border-radius: 15px; overflow: hidden; border: 3px solid var(--primary-dark);
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -192,11 +201,11 @@
                 <button class="copy-btn" onclick="copyText('b-ip', this)">Copy</button>
             </div>
             <div class="info-row">
-                <div><small style="color: #888;">PORT</small><br><span class="value" id="b-port">56048</span></div>
+                <div><small style="color: #888;">PORT</small><br><span class="value" id="b-port">27584</span></div>
                 <button class="copy-btn" onclick="copyText('b-port', this)">Copy</button>
             </div>
             <div style="text-align:center; margin-top:20px;">
-                <a href="minecraft://externalServer?name=CatfishSMP&serverAddress=catfishsmp.falixsrv.me&port=56048" class="action-btn">Launch Bedrock</a>
+                <a href="minecraft://externalServer?name=CatfishSMP&serverAddress=catfishsmp.falixsrv.me&port=27584" class="action-btn">Launch Bedrock</a>
             </div>
         </div>
 
@@ -207,7 +216,7 @@
                 <button class="copy-btn" onclick="copyText('j-ip', this)">Copy</button>
             </div>
             <div class="info-row">
-                <div><small style="color: #888;">FULL IP (PORT)</small><br><span class="value" id="j-full">catfishsmp.falixsrv.me:56048</span></div>
+                <div><small style="color: #888;">FULL IP (PORT)</small><br><span class="value" id="j-full">catfishsmp.falixsrv.me:27584</span></div>
                 <button class="copy-btn" onclick="copyText('j-full', this)">Copy</button>
             </div>
         </div>
@@ -223,7 +232,7 @@
                     <li>Go to the <b>Servers</b> tab.</li>
                     <li>Click <b>Add Server</b>.</li>
                     <li>IP: <b>catfishsmp.falixsrv.me</b></li>
-                    <li>Port: <b>56048</b></li>
+                    <li>Port: <b>27584</b></li>
                 </ol>
             </div>
             <div>
@@ -239,6 +248,7 @@
         </div>
 
         <button class="yt-btn" onclick="toggleVideo(this)">▶ Watch Video Tutorial</button>
+        <span class="video-note">⚠️ Note: The Port has been changed to 27584 (Different from video).</span>
         <div id="video-box" class="video-wrapper">
             <iframe id="yt-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -285,9 +295,6 @@
         }
     }
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
