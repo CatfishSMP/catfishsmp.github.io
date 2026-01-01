@@ -69,7 +69,6 @@
             animation: titleGlow 3s ease-in-out infinite;
         }
 
-        /* BUTTON FLEX BOX */
         .button-group {
             display: flex;
             gap: 15px;
@@ -97,7 +96,7 @@
         .discord-btn:hover { transform: scale(1.05); background: #4752c4; box-shadow: 0 15px 30px rgba(88, 101, 242, 0.4); }
         .support-btn:hover { transform: scale(1.05); background: var(--primary-dark); box-shadow: 0 15px 30px rgba(0, 230, 118, 0.2); }
 
-        /* CARDS */
+        /* CARDS GRID */
         .cards-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 25px; }
         @media (min-width: 768px) { .cards-grid { grid-template-columns: 1fr 1fr; } }
 
@@ -115,6 +114,7 @@
 
         .card:hover { border-color: var(--primary); transform: translateY(-10px); }
 
+        /* Animation Stagger */
         .card:nth-child(1) { animation-delay: 0.2s; }
         .card:nth-child(2) { animation-delay: 0.4s; }
         .how-to-card { animation-delay: 0.6s; }
@@ -161,9 +161,12 @@
             display: block;
             margin-top: 10px;
             color: #ffca28;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-align: center;
             font-weight: bold;
+            padding: 5px;
+            background: rgba(255, 202, 40, 0.1);
+            border-radius: 8px;
         }
 
         .video-wrapper {
@@ -201,11 +204,11 @@
                 <button class="copy-btn" onclick="copyText('b-ip', this)">Copy</button>
             </div>
             <div class="info-row">
-                <div><small style="color: #888;">PORT</small><br><span class="value" id="b-port">27584</span></div>
+                <div><small style="color: #888;">PORT</small><br><span class="value" id="b-port">21771</span></div>
                 <button class="copy-btn" onclick="copyText('b-port', this)">Copy</button>
             </div>
             <div style="text-align:center; margin-top:20px;">
-                <a href="minecraft://externalServer?name=CatfishSMP&serverAddress=catfishsmp.falixsrv.me&port=27584" class="action-btn">Launch Bedrock</a>
+                <a href="minecraft://externalServer?name=CatfishSMP&serverAddress=catfishsmp.falixsrv.me&port=21771" class="action-btn">Launch Bedrock</a>
             </div>
         </div>
 
@@ -216,7 +219,7 @@
                 <button class="copy-btn" onclick="copyText('j-ip', this)">Copy</button>
             </div>
             <div class="info-row">
-                <div><small style="color: #888;">FULL IP (PORT)</small><br><span class="value" id="j-full">catfishsmp.falixsrv.me:27584</span></div>
+                <div><small style="color: #888;">FULL IP (PORT)</small><br><span class="value" id="j-full">catfishsmp.falixsrv.me:21771</span></div>
                 <button class="copy-btn" onclick="copyText('j-full', this)">Copy</button>
             </div>
         </div>
@@ -232,7 +235,7 @@
                     <li>Go to the <b>Servers</b> tab.</li>
                     <li>Click <b>Add Server</b>.</li>
                     <li>IP: <b>catfishsmp.falixsrv.me</b></li>
-                    <li>Port: <b>27584</b></li>
+                    <li>Port: <b>21771</b></li>
                 </ol>
             </div>
             <div>
@@ -248,7 +251,7 @@
         </div>
 
         <button class="yt-btn" onclick="toggleVideo(this)">▶ Watch Video Tutorial</button>
-        <span class="video-note">⚠️ Note: The Port has been changed to 27584 (Different from video).</span>
+        <span class="video-note">⚠️ Note: The Port has been changed to 21771 (The video shows an old port).</span>
         <div id="video-box" class="video-wrapper">
             <iframe id="yt-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
